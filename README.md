@@ -12,17 +12,19 @@ PHA-FreePro serve a condurre, documentare e seguire nel tempo gli studi di sicur
 
 | Area | Funzionalità |
 |---|---|
-| **Metodologie** | HAZOP (IEC 61882), What-If, Checklist, LOPA (CCPS), SIL (IEC 61511); poi FMEA, HAZID, bow-tie |
-| **Worksheet** | Griglia gerarchica Nodo → Deviazione → Causa → Conseguenza → Salvaguardie; tutto da tastiera; AutoType; Copy From; mirroring dati tra fogli; liste strutturate |
-| **Rischio** | Matrice configurabile (3×3 … 7×7), rischio iniziale e residuo, heat map |
-| **LOPA** | Scenari collegati all'HAZOP, eventi iniziatori, IPL con PFD, frequenza mitigata, gap e SIL target |
-| **Disegni** | P&ID in PDF con evidenziazione dei nodi e link bidirezionale al worksheet |
+| **Interfaccia** | Workspace con studi aperti e librerie attive, fogli a schede, procedura guidata per il nuovo studio |
+| **Metodologie** | HAZOP (IEC 61882), What-If, Checklist, LOPA (CCPS), SIL (IEC 61511); poi FMEA, HAZID, CHAZOP, HACCP, DHA, SIMOPS, Security, bow-tie |
+| **Worksheet** | Griglia gerarchica Nodo → Deviazione → Causa → Conseguenza → Salvaguardie; tutto da tastiera; AutoType; Copy From; mirroring dati tra fogli; liste strutturate; viste personalizzabili; note, allegati e statistiche di cella |
+| **Rischio** | Più risk system configurabili (3×3 … 7×7), rischio prima e dopo la riduzione, heat map ibrida |
+| **LOPA / SIL** | Scenari collegati all'HAZOP, eventi iniziatori, IPL con PFD, frequenza mitigata; SIL da LOPA, Risk Graph o Safety Layer Matrix |
+| **Disegni** | P&ID in PDF con evidenziazione dei nodi; diagramma collegato disegnato nel programma |
+| **Qualità dei dati** | Analisi (statistiche e grafici) e Controllo dati (completezza, regole, eccezioni) |
 | **Team** | Membri, sessioni, registro presenze |
 | **Librerie** | Guideword, parametri, cause, salvaguardie, IPL, checklist (obiettivo ≥ 2.500 voci) e knowledge base aziendale |
 | **Raccomandazioni** | Responsabili, scadenze, workflow, evidenze di chiusura, notifiche, dashboard |
 | **Report** | DOCX, XLSX, PDF, HTML, CSV; template personalizzabili; filtri |
 | **Template** | Metodologie definite come template JSON, modificabili con un designer visuale |
-| **Governance** | Audit trail per campo, release firmate, confronto revisioni |
+| **Governance** | Audit trail per campo, approvazione bozza e release firmate, Change Log, Revision Chain, revalidation, protezione dello studio |
 | **Sicurezza** | Ruoli e permessi, LDAP/AD, OIDC, 2FA |
 | **Deployment** | App desktop (Windows/macOS/Linux) e server on-premise (Docker) |
 | **Lingue** | Italiano e inglese, poi DE/FR/ES/PT/JA/ZH/KO e dati right-to-left |
@@ -32,9 +34,10 @@ PHA-FreePro serve a condurre, documentare e seguire nel tempo gli studi di sicur
 | Documento | Contenuto |
 |---|---|
 | [00 — Ricerca e fonti](docs/00-ricerca-fonti.md) | Cosa sappiamo del prodotto di riferimento, con fonti e livello di affidabilità |
+| [Relazione dettagliata sul software di riferimento](docs/Documentazione_PHA-Pro_completa.md) | Interfaccia, schede, flussi, configurazione, release e troubleshooting del prodotto di riferimento, con fonti S1–S13 |
 | [01 — Panoramica](docs/01-panoramica.md) | Scopo, utenti, ciclo di vita di uno studio, mappa dei moduli, requisiti non funzionali |
 | [02 — Metodologie](docs/02-metodologie.md) | HAZOP, What-If, Checklist, FMEA, HAZID, matrice di rischio, LOPA/SIL, bow-tie |
-| [03 — Moduli](docs/03-moduli.md) | Specifica di ogni modulo (M1–M18) con criteri di accettazione |
+| [03 — Moduli](docs/03-moduli.md) | Specifica di ogni modulo (M0–M20) con criteri di accettazione |
 | [04 — Modello dati](docs/04-modello-dati.md) | Diagramma ER, entità, esempio di template, formule |
 | [05 — Architettura](docs/05-architettura.md) | Stack, struttura del repository, sync offline, formato file, API, sicurezza |
 | [06 — Glossario](docs/06-glossario.md) | Termini di process safety |
@@ -45,10 +48,12 @@ PHA-FreePro serve a condurre, documentare e seguire nel tempo gli studi di sicur
 | Milestone | Obiettivo | Periodo indicativo |
 |---|---|---|
 | M0 | Motore template + griglia prototipo | dicembre 2026 |
-| M1 — v0.1 | HAZOP completo desktop, matrice, librerie, export Word/Excel | marzo 2027 |
-| M2 — v0.5 | LOPA/SIL, P&ID, What-If, Checklist, report completi | giugno 2027 |
-| M3 — v1.0 | Server multiutente, offline sync, Recommendations Manager, audit e release | ottobre 2027 |
-| M4 — v1.5 | Template designer, FMEA, bow-tie, API, altre lingue | gennaio 2028 |
+| M1 — v0.1 | HAZOP completo desktop, matrice, librerie, controllo dati, export Word/Excel | maggio 2027 |
+| M2 — v0.5 | LOPA/SIL, P&ID e diagramma collegato, Analisi, What-If, Checklist, report completi | settembre 2027 |
+| M3 — v1.0 | Server multiutente, offline sync, Recommendations Manager, release e revalidation | gennaio 2028 |
+| M4 — v1.5 | Template designer, FMEA e altri metodi, bow-tie, API, altre lingue | aprile 2028 |
+
+Date calcolate per 1 sviluppatore; con 2–3 sviluppatori si accorciano di circa il 40%.
 
 ## Stack previsto
 

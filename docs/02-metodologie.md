@@ -29,12 +29,13 @@ Studio
 
 | Colonna | Tipo | Note |
 |---|---|---|
-| Nodo | riferimento | Con descrizione, intento progettuale, condizioni operative (P, T, portata), disegni collegati |
+| Nodo | riferimento | Con descrizione, **tipo** (linea, recipiente, scambiatore, pompa…), intento progettuale, condizioni operative (P, T, portata), disegni collegati. Si può riusare da studi precedenti |
 | Guideword | lista | NO/NON, PIÙ, MENO, ANCHE, PARTE DI, INVERSO, ALTRO DA, PRIMA, DOPO, PRESTO, TARDI |
 | Parametro | lista | Flusso, Pressione, Temperatura, Livello, Composizione, Fase, Reazione, Viscosità, Tempo, Sequenza, Manutenzione, Avviamento/Arresto, Utilities, Campionamento, Corrosione/Erosione, Sicurezza servizi… |
 | Deviazione | testo calcolato/editabile | Default = guideword + parametro |
 | Causa | testo + AutoType + libreria | Opzionale: **frequenza della causa** (per la LOPA) e categoria (guasto apparecchiatura, errore umano, esterno) |
-| Conseguenza | testo | Opzionale: categoria di impatto (persone, ambiente, asset, reputazione) |
+| Conseguenza | testo | |
+| Categoria conseguenza | lista | Persone/sicurezza, ambiente, asset, produzione, reputazione (codici dal Data Dictionary); può selezionare il risk system da usare |
 | Salvaguardie | lista multi-riga | Tag strumento, tipo (BPCS, allarme+operatore, PSV, SIS, fisica), flag "candidato IPL" |
 | S | lista | Severità secondo la matrice |
 | L | lista | Probabilità (Likelihood) |
@@ -125,9 +126,29 @@ Analisi semi-quantitativa di uno **scenario** (causa → conseguenza) per verifi
 - Lo scenario mostra la "catena" grafica IE → modificatori → IPL → conseguenza con le frequenze intermedie.
 
 ### SIL
+Il SIL si determina con tre metodi, ognuno con il proprio template (relazione §2 e §11; brochure Sphera 2025):
+- **dalla LOPA** (sopra);
+- **Risk Graph** (IEC 61508-5 / IEC 61511-3, allegato D): albero a parametri C (conseguenza), F (esposizione), P (possibilità di evitare), W (probabilità di domanda) → SIL richiesto. Il grafo si calibra nelle impostazioni;
+- **Safety Layer Matrix**: matrice severità × probabilità × numero di strati di protezione non-SIS già presenti → SIL richiesto.
+
 Lista di tutte le SIF emerse, con SIL target, scenari che le richiedono (una SIF può proteggere più scenari: vale il SIL più alto), tag strumenti e stato. Esportabile come base per la **Safety Requirements Specification** (IEC 61511).
 
 ---
+
+<a id="altri"></a>
+## 8-bis. Altri metodi specialistici (fase 4, come template)
+
+Il prodotto di riferimento li elenca nella brochure (relazione §11). Per noi sono template sul motore generico, senza codice dedicato:
+
+| Metodo | Gerarchia del template |
+|---|---|
+| **CHAZOP** (Computer/Control HAZOP) | Sistema di controllo → Nodo/funzione (I/O, rete, HMI, alimentazione) → Guideword per sistemi digitali → Causa → Conseguenza → Salvaguardie → Rischio |
+| **HACCP** | Fase di processo → Pericolo (biologico/chimico/fisico) → Punto critico di controllo (albero decisionale) → Limiti critici → Monitoraggio → Azioni correttive → Verifica |
+| **DHA** — Dust Hazard Analysis (NFPA 652) | Area/apparecchiatura → Polvere combustibile (Kst, MIE) → Pericolo (deflagrazione, flash fire) → Fonti di innesco → Salvaguardie → Gap rispetto alla norma |
+| **SIMOPS** | Attività A × Attività B (matrice) → Interazione → Pericolo → Controlli → Permesso/restrizione |
+| **Security Assessment** (SVA) | Asset → Minaccia → Vulnerabilità → Conseguenza → Contromisure → Rischio |
+
+Il campo **categoria di conseguenza** (persone/sicurezza, ambiente, asset, produzione, reputazione) è comune a tutti i template di valutazione del rischio e alimenta più risk system (M8).
 
 <a id="bowtie"></a>
 ## 8. Bow-tie (opzionale, fase 4)

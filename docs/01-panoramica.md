@@ -33,7 +33,7 @@ Riproduce le funzionalità che i professionisti si aspettano da uno strumento PH
 1. **Setup**: scelta del template (es. "HAZOP + LOPA, matrice 5×5 aziendale"), dati generali dello studio (impianto, unità, scopo, confini, revisione), team.
 2. **Preparazione**: caricamento dei P&ID e dei documenti di riferimento; definizione dei **nodi** e dell'intento progettuale; selezione delle **deviazioni** applicabili da libreria (guideword × parametro).
 3. **Sessioni**: per ogni nodo e deviazione il team individua **cause → conseguenze → salvaguardie esistenti**, assegna **severità e probabilità**, calcola il **rischio**, emette **raccomandazioni**. Il programma registra data, durata e presenti di ogni sessione.
-4. **Revisione & LOPA**: gli scenari ad alto rischio vengono trasferiti automaticamente nel foglio LOPA (scenari collegati, non copiati); si identificano gli IPL, si calcola la frequenza mitigata, si determina il **SIL** richiesto.
+4. **Revisione, controllo dati & LOPA**: *Analisi* e *Controllo dati* evidenziano lacune e incoerenze. gli scenari ad alto rischio vengono trasferiti automaticamente nel foglio LOPA (scenari collegati, non copiati); si identificano gli IPL, si calcola la frequenza mitigata, si determina il **SIL** richiesto.
 5. **Rilascio**: lo studio viene "congelato" in una **release** (revisione A, B, 0…) con firma; si generano i report (Word/Excel/PDF/HTML).
 6. **Follow-up**: le raccomandazioni vivono nel **Recommendations Manager** con responsabile, scadenza, stato, evidenze e verifica di chiusura, anche dopo la chiusura dello studio. Lo studio si rivaluta ogni 5 anni (revalidation, OSHA PSM) partendo dalla release precedente.
 
@@ -41,6 +41,7 @@ Riproduce le funzionalità che i professionisti si aspettano da uno strumento PH
 
 | # | Modulo | Descrizione breve | Dettaglio |
 |---|---|---|---|
+| M0 | Struttura interfaccia | Workspace (studi aperti, librerie attive), fogli a schede, menu, toolbar | [03](03-moduli.md#m0) |
 | M1 | Gestione progetti/studi | Elenco studi, apertura, duplicazione, archiviazione, revalidation | [03](03-moduli.md#m1) |
 | M2 | Dati dello studio | Informazioni generali, scopo, documenti, assunzioni | [03](03-moduli.md#m2) |
 | M3 | Team e sessioni | Membri, competenze, presenze per sessione, durata | [03](03-moduli.md#m3) |
@@ -59,6 +60,10 @@ Riproduce le funzionalità che i professionisti si aspettano da uno strumento PH
 | M16 | Internazionalizzazione | UI multilingua, dati RTL, librerie multilingua | [03](03-moduli.md#m16) |
 | M17 | Bow-tie (opzionale) | Diagramma bow-tie generato dagli scenari | [02](02-metodologie.md#bowtie) |
 | M18 | Import / API | Import Excel, API REST, interscambio JSON | [03](03-moduli.md#m18) |
+| M19 | Analisi (Analyze) | Statistiche e grafici dello studio, cliccabili | [03](03-moduli.md#m19) |
+| M20 | Controllo dati (Data Check) | Regole di completezza/coerenza, eccezioni motivate, blocco dell'approvazione | [03](03-moduli.md#m20) |
+
+Il modulo M4 comprende anche il **Diagramma collegato** (schema a blocchi disegnato nel programma) oltre all'evidenziazione dei nodi sui P&ID. Il dettaglio dei flussi del prodotto di riferimento si trova nella [relazione dettagliata](Documentazione_PHA-Pro_completa.md).
 
 ## Requisiti non funzionali chiave
 

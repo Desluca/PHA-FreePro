@@ -66,6 +66,21 @@ erDiagram
 | `AuditEntry` | entità, id, campo, vecchio, nuovo, utente, timestamp, session_id | Append-only |
 | `Library`, `LibraryItem` | scope (sistema/org/studio), tipo, testo i18n, attributi (frequenza, PFD, categoria), tag, fonte | M10 |
 
+### Entità aggiunte dalla relazione dettagliata
+
+| Entità | Campi chiave | Modulo |
+|---|---|---|
+| `SheetView` | sheet_key, owner (utente o studio), etichette alternative, colonne visibili/ordine/larghezze/formati, breakdown, filtri con ambito (`screen`/`print`/`both`) | M5 |
+| `CellNote` | record_id, column_key, testo, autore, data | M5 |
+| `RevalidationMarker` | record_id, column_key (opz.), revalidation_id, autore, data | M5, M14 |
+| `Revalidation` | study_id, data, team, perimetro, esito, release di partenza | M14 |
+| `RiskSystem` | sostituisce la singola `RiskMatrix`: più matrici per studio, ciascuna con `linked_level` e categoria di conseguenza | M8 |
+| `DiagramSheet` / `DiagramShape` / `DiagramConnector` | forma (tipo, geometria, stile, testo), record_id collegato; connettori fra forme | M4-bis |
+| `ReportCollection` | nome, elementi ordinati (foglio/report + vista + filtri), intestazioni/piè di pagina, formato | M12 |
+| `DataCheckRule` | espressione, criticità, messaggio, livello/colonna | M20 |
+| `DataCheckException` | rule_id, record_id, motivazione, autore, data | M20 |
+| `DictionaryEntry` | dominio (es. `consequence_category`), codice, etichetta i18n, ordine, attivo | M10 |
+
 ## Esempio: definizione di template (estratto JSON)
 
 ```json

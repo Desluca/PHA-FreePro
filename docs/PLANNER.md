@@ -20,26 +20,30 @@ Costruire uno strumento **open source** per PHA/HAZOP con parità funzionale sul
 
 | Fase | Contenuto | Sprint | Periodo indicativo | Milestone |
 |---|---|---|---|---|
-| **0 — Fondamenta** | Ricerca completata, decisioni, monorepo, CI, schema dati, motore template | S1–S2 | 16 nov – 11 dic 2026 | **M0**: "Hello worksheet" — un template JSON genera una griglia editabile |
-| **1 — MVP HAZOP desktop** | Studi, dati studio, team/sessioni, worksheet HAZOP completo, matrice di rischio, librerie base, AutoType, raccomandazioni semplici, export Excel/Word, file `.phaf`, app Tauri singolo utente | S3–S8 | dic 2026 – mar 2027 | **M1 (v0.1)**: si conduce un HAZOP reale dall'inizio al report |
-| **2 — LOPA, disegni, report** | LOPA collegata, SIL, P&ID con evidenziazione nodi, report completi e personalizzabili, What-If e Checklist, import Excel | S9–S13 | mar – giu 2027 | **M2 (v0.5)**: HAZOP+LOPA con P&ID e report da consegnare al cliente |
-| **3 — Multiutente enterprise** | Server, PostgreSQL, sync offline, utenti/ruoli, LDAP/OIDC/2FA, Recommendations Manager completo con workflow e notifiche, audit trail, release firmate, confronto revisioni | S14–S20 | giu – ott 2027 | **M3 (v1.0)**: installazione on-premise per un'organizzazione |
-| **4 — Estensioni** | Template designer visuale, FMEA, HAZID, Dependency Matrix, bow-tie, dashboard portafoglio, API pubblica + webhook, lingue aggiuntive, RTL | S21–S26 | ott 2027 – gen 2028 | **M4 (v1.5)** |
+Durate calcolate con 1 sviluppatore (≈ 10 gp per sprint) e stime +20% di contingenza.
+
+| Fase | Contenuto | Sprint | Periodo indicativo | Milestone |
+|---|---|---|---|---|
+| **0 — Fondamenta** | Ricerca completata, decisioni, monorepo, CI, schema dati, motore template | S1–S3 | 16 nov – 24 dic 2026 | **M0**: "Hello worksheet": un template JSON genera una griglia editabile |
+| **1 — MVP HAZOP desktop** | Workspace e schede, procedura guidata, dati studio, team/sessioni, Nodi/Deviazioni/Worksheet HAZOP, viste personalizzabili, matrice di rischio, librerie base, AutoType, raccomandazioni semplici, Data Check di base, export Excel/Word, file `.phaf`, app Tauri singolo utente | S4–S13 | gen – mag 2027 | **M1 (v0.1)**: si conduce un HAZOP reale dall'inizio al report |
+| **2 — LOPA, disegni, report, analisi** | LOPA collegata, SIL (LOPA, Risk Graph, Safety Layer Matrix), P&ID con evidenziazione nodi, diagramma collegato, più risk system e heat map ibrida, Analisi, note/allegati/statistiche di cella, Report Collection e report personalizzabili, What-If e Checklist, import Excel | S14–S23 | mag – set 2027 | **M2 (v0.5)**: HAZOP+LOPA con diagrammi e report da consegnare al cliente |
+| **3 — Multiutente enterprise** | Server, PostgreSQL, sync offline, utenti/ruoli, LDAP/OIDC/2FA, protezione, Recommendations Manager completo, audit trail, release (approvazione bozza, Change Log, Revision Chain), revalidation, Data Check avanzato | S24–S31 | ott 2027 – gen 2028 | **M3 (v1.0)**: installazione on-premise per un'organizzazione |
+| **4 — Estensioni** | Template designer visuale, FMEA, HAZID, CHAZOP, HACCP, DHA, SIMOPS, Security, Dependency Matrix, bow-tie, dashboard portafoglio, API pubblica + webhook, lingue aggiuntive, RTL | S32–S38 | feb – apr 2028 | **M4 (v1.5)** |
 
 ```mermaid
 gantt
-    title PHA-FreePro — roadmap
+    title PHA-FreePro — roadmap (1 sviluppatore)
     dateFormat  YYYY-MM-DD
     section Fase 0
-    Fondamenta              :f0, 2026-11-16, 4w
+    Fondamenta                     :f0, 2026-11-16, 6w
     section Fase 1
-    MVP HAZOP desktop       :f1, after f0, 12w
+    MVP HAZOP desktop              :f1, after f0, 20w
     section Fase 2
-    LOPA, P&ID, report      :f2, after f1, 10w
+    LOPA, diagrammi, report        :f2, after f1, 20w
     section Fase 3
-    Multiutente enterprise  :f3, after f2, 14w
+    Multiutente enterprise         :f3, after f2, 16w
     section Fase 4
-    Estensioni              :f4, after f3, 12w
+    Estensioni                     :f4, after f3, 14w
 ```
 
 ## 4. Backlog per fase
@@ -49,7 +53,9 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 ### Fase 0 — Fondamenta
 
 - [x] `RES-01` Ricerca pubblica sul prodotto di riferimento e redazione documentazione · 2 · — · docs
-- [ ] `RES-02` Registrarsi alla demo series Sphera (5 video) e annotare flussi osservati in `00-ricerca-fonti.md` (solo descrizioni, niente screenshot) · 1 · —
+- [x] `RES-04` Relazione dettagliata sul software di riferimento ([Documentazione_PHA-Pro_completa.md](Documentazione_PHA-Pro_completa.md)) e integrazione nei documenti 00–06 · 1 · RES-01
+- [ ] `RES-02` Registrarsi alla demo series Sphera (5 video), guardare il video YouTube jfCmCVNGgaU (da 01:21) e annotare i flussi osservati in `00-ricerca-fonti.md` (solo descrizioni, niente screenshot) · 1 · —
+- [ ] `RES-05` Verificare sui report pubblici citati dalla relazione (S8, S9) le colonne reali del worksheet e confrontarle con il template HAZOP di serie · 0,5 · RES-04
 - [ ] `RES-03` Studiare manuali pubblici di tool concorrenti (Open-PHA, PHAWorks) per i flussi LOPA · 1 · —
 - [ ] `DEC-01` Confermare stack (vedi decisione D-01) · 0,5 · RES-01
 - [ ] `DEC-02` Decidere il nome definitivo del progetto (rischio R-01) · 0,5 · —
@@ -62,7 +68,9 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 
 ### Fase 1 — MVP HAZOP desktop
 
+- [ ] `M0-01` Finestra principale: Workspace (studi aperti, librerie attive), fogli a schede, menu, toolbar, barra di stato · 4 · ENG-05 · M0
 - [ ] `M1-01` Elenco studi, nuovo da template, copia, archivia · 3 · ENG-06 · M1
+- [ ] `M1-03` Procedura guidata di nuovo studio (New File Wizard) · 3 · M1-01, M2-01 · M1
 - [ ] `M2-01` Form dati studio configurabile + documenti di riferimento · 3 · ENG-03 · M2
 - [ ] `M3-01` Team, sessioni, presenze, marcatura righe per sessione · 4 · M1-01 · M3
 - [ ] `M5-01` Editing tastiera completo (Tab, Invio, indent, move) · 5 · ENG-05 · M5
@@ -70,6 +78,8 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 - [ ] `M5-03` AutoType (studio + libreria, fuzzy) · 4 · M5-01, M10-01
 - [ ] `M5-04` Copy From (da studio/libreria) e duplicazione nodo · 3 · M5-01
 - [ ] `M5-05` Validazioni e pannello problemi · 3 · ENG-04
+- [ ] `M5-08` Viste personalizzabili del foglio: rinomina, mostra/nascondi, riordina colonne, formati, breakdown, filtri con ambito schermo/stampa · 5 · M5-01 · M5
+- [ ] `M20-01` Controllo dati di base: regole di serie e pannello risultati · 4 · M5-05 · M20
 - [ ] `M6-01` Template HAZOP di serie (gerarchia, colonne, liste guideword/parametri IT/EN) · 3 · ENG-03 · M6
 - [ ] `M6-02` Generatore deviazioni (matrice guideword × parametro) · 2 · M6-01
 - [ ] `M8-01` Matrice di rischio: modello, editor, rischio iniziale/residuo, colori · 5 · ENG-04 · M8
@@ -100,6 +110,12 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 - [ ] `M18-01` Wizard import da Excel · 4 · M6-01 · M18
 - [ ] `M5-06` Link/riferimenti incrociati e mirroring nodo master · 4 · M9-01
 - [ ] `M5-07` Modalità presentazione · 1 · M5-01
+- [ ] `M4-04` Diagramma collegato: area di disegno, forme, connettori, trascinamento dei nodi, link bidirezionale · 8 · M0-01 · M4
+- [ ] `M5-09` Note di cella, allegati, statistiche di colonna · 3 · M5-01 · M5
+- [ ] `M8-02` Più risk system per studio collegati a livelli/categorie; heat map ibrida · 4 · M8-01 · M8
+- [ ] `M9-06` Determinazione SIL con Risk Graph e Safety Layer Matrix · 4 · M9-02 · M9
+- [ ] `M12-06` Anteprima di stampa, intestazioni e piè di pagina dinamici, Report Collection, export XML · 5 · M12-03 · M12
+- [ ] `M19-01` Analisi: contatori, distribuzioni, grafici cliccabili, statistiche · 5 · M8-01 · M19
 
 ### Fase 3 — Multiutente enterprise
 
@@ -113,6 +129,9 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 - [ ] `M11-04` Portale "Le mie azioni" (mobile friendly) e dashboard · 4 · M11-02
 - [ ] `M14-02` Release firmate con hash, lock, confronto revisioni · 5 · M14-01
 - [ ] `M1-02` Gerarchia organizzazione/sito/impianto, revalidation · 3 · M15-01
+- [ ] `M14-03` Approvazione bozza (A.0…), Change Log, Revision Chain, Revalidation History e marker di revalidation · 5 · M14-02 · M14
+- [ ] `M15-03` Protezione dello studio (apertura, struttura, dati) · 3 · M15-01 · M15
+- [ ] `M20-02` Regole di controllo personalizzate, eccezioni motivate, blocco dell'approvazione · 3 · M20-01, M14-03 · M20
 - [ ] `OPS-01` Docker Compose, backup/restore, guida installazione on-premise · 3 · SRV-01
 - [ ] `SEC-01` Revisione sicurezza (OWASP ASVS L2) e penetration test interno · 4 · M15-02
 - [ ] `QA-02` Test di carico (studio 5.000 righe, 20 utenti) · 2 · SRV-03
@@ -122,6 +141,7 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 - [ ] `M13-01` Template designer visuale · 10 · ENG-03 · M13
 - [ ] `M7-03` Template FMEA (RPN / Action Priority) · 3 · M13-01
 - [ ] `M7-04` Template HAZID · 2 · M13-01
+- [ ] `M7-06` Template CHAZOP, HACCP, DHA, SIMOPS, Security Assessment · 6 · M13-01 · [02 §8-bis](02-metodologie.md#altri)
 - [ ] `M13-02` Dependency Matrix (matrici N×M) · 4 · M13-01
 - [ ] `M17-01` Vista bow-tie generata dagli scenari + export SVG/JSON · 6 · M9-01 · M17
 - [ ] `M12-05` Report di portafoglio multi-studio · 4 · SRV-01
@@ -130,7 +150,7 @@ Formato: `ID` · descrizione · stima (gp) · dipende da · modulo ([03-moduli.m
 - [ ] `M7-05` Libreria checklist fino a ≥ 2.500 voci · 8 · M7-02
 - [ ] `I18N-02` Lingue DE/FR/ES/PT/JA/ZH/KO e dati RTL · 5 · I18N-01
 
-**Totale stimato:** Fase 0 ≈ 24 gp · Fase 1 ≈ 71 gp · Fase 2 ≈ 55 gp · Fase 3 ≈ 56 gp · Fase 4 ≈ 49 gp → **≈ 255 gp** (+20% di contingenza ≈ 305 gp, circa 14 mesi-persona).
+**Totale stimato:** Fase 0 ≈ 26 gp · Fase 1 ≈ 87 gp · Fase 2 ≈ 84 gp · Fase 3 ≈ 67 gp · Fase 4 ≈ 55 gp → **≈ 319 gp** (+20% di contingenza ≈ 380 gp, circa 17 mesi-persona). Le stime sono cresciute dopo l'integrazione della relazione dettagliata (`RES-04`).
 
 ## 5. Registro decisioni
 
